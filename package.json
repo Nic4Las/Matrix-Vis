@@ -1,0 +1,20 @@
+{
+  "name": "matrix-vis",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "serve": "parcel ./src/index.html --dist-dir ./build/dev --no-cache --open",
+    "build": "parcel build ./src/index.html --dist-dir ./build/release --no-cache --public-url ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/resolver-glob": "^2.0.0-nightly.2338",
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "dependencies": {
+    "konva": "^8.2.2",
+    "material-components-web": "^13.0.0"
+  }
+}
