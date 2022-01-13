@@ -13,7 +13,7 @@ function applyAndConvertMatrix(t1: Transform, t2: Transform): Transform {
   return resTravo;
 }
 
-function interpolateTransform2(t1: Transform, t2: Transform, a: number): Transform {
+function interpolateTransform_(t1: Transform, t2: Transform, a: number): Transform {
   // console.log(a);
   let resTravo = new Transform();
   let t1Decomposed = t1.decompose();
@@ -23,7 +23,6 @@ function interpolateTransform2(t1: Transform, t2: Transform, a: number): Transfo
 
   let resX = lerp(t1Decomposed.x, t2Decomposed.x, a);
   let resY = lerp(t1Decomposed.y, t2Decomposed.y, a);
-  // console.log(resX, resY);
   let resRotation = lerp(t1Decomposed.rotation, t2Decomposed.rotation, a);
   let resScaleX = lerp(t1Decomposed.scaleX, t2Decomposed.scaleX, a);
   let resScaleY = lerp(t1Decomposed.scaleY, t2Decomposed.scaleY, a);
@@ -32,10 +31,9 @@ function interpolateTransform2(t1: Transform, t2: Transform, a: number): Transfo
 
   resTravo.translate(resX, resY);
   resTravo.rotate(resRotation * (Math.PI / 180));
+  resTravo.skew(resSkewX, resSkewY);
   resTravo.scale(resScaleX, resScaleY);
-  resTravo.skew(-resSkewX, -resSkewY);
 
-  // console.log(resTravo);
   return resTravo;
 }
 

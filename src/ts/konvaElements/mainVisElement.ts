@@ -67,7 +67,7 @@ export class mainVisElement {
       this.zoomHandler(e);
     });
 
-    this.stage.on("click tap", (e) => {
+    this.stage.on("click tap mousedown", (e) => {
       this.selectDeselectHandler(e);
     });
 
@@ -140,10 +140,10 @@ export class mainVisElement {
     bgImmage.src = test;
     bgImmage.onload = (e) => {
       this.objects[0].fillPatternImage(bgImmage);
-      this.objects[0].width(bgImmage.width / 2);
-      this.objects[0].height(bgImmage.height / 2);
-      this.objects[0].y(-bgImmage.height / 2);
-      this.objects[0].fillPatternScale({ x: 0.5, y: 0.5 });
+      this.objects[0].width(bgImmage.width);
+      this.objects[0].height(bgImmage.height);
+      this.objects[0].y(-bgImmage.height);
+      this.objects[0].fillPatternScale({ x: 1, y: 1 });
     };
 
     window.addEventListener("keydown", (e: Event) => {
@@ -239,6 +239,7 @@ export class mainVisElement {
               let result = target.result;
               if (typeof result === "string" || result instanceof String) {
                 let htmlImageElement = new Image();
+                console.log(result);
                 htmlImageElement.src = String(result);
 
                 htmlImageElement.onload = (e3) => {

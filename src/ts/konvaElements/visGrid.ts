@@ -10,14 +10,14 @@ export class VisGrid extends Group {
     let isSlow = browserType === "firefox" ? true : true;
     let gridOffset = isSlow ? 0 : 1;
 
-    for (let i = 0; i < Math.ceil(window.innerWidth / scale) * 2 + 1; i++) {
+    for (let i = 0; i < Math.ceil(window.innerWidth / scale) * 2; i++) {
       let xPos = (i - Math.ceil(window.innerWidth / scale)) * scale;
-      if ((i + 1) % 2 == 0 && isSlow) {
+      if (i % 2 == 0 && isSlow) {
         continue;
       }
       this.add(
         new Line({
-          points: [xPos, window.innerWidth * 3, xPos, -window.innerWidth * 3],
+          points: [xPos, window.innerHeight, xPos, -window.innerHeight],
           stroke: "#1da3d3",
           strokeWidth: (i + 1) % 2 == 0 ? 0.5 : 1,
           perfectDrawEnabled: !isSlow,
@@ -25,16 +25,16 @@ export class VisGrid extends Group {
       );
     }
 
-    for (let i = 0; i < Math.ceil(window.innerHeight / scale) * 2 + 1; i++) {
+    for (let i = 0; i < Math.ceil(window.innerHeight / scale) * 2; i++) {
       let yPos = (i - Math.ceil(window.innerHeight / scale)) * scale;
       if (i % 2 == 0 && isSlow) {
         continue;
       }
       this.add(
         new Line({
-          points: [window.innerHeight * 3, yPos, -window.innerHeight * 3, yPos],
+          points: [window.innerWidth, yPos, -window.innerWidth, yPos],
           stroke: "#1da3d3",
-          strokeWidth: i % 2 == 0 ? 0.5 : 1,
+          strokeWidth: (i + 1) % 2 == 0 ? 0.5 : 1,
           perfectDrawEnabled: !isSlow,
         })
       );

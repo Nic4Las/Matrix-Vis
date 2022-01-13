@@ -1,5 +1,5 @@
 import { Transform } from "konva/lib/Util";
-import { mainVisElement } from "./konvaElements/mainVisElemant";
+import { mainVisElement } from "./konvaElements/mainVisElement";
 import { applyAndConvertMatrix, interpolateTransform } from "./utils";
 
 let mainVis = new mainVisElement("container", 50);
@@ -36,6 +36,7 @@ getTravoButton.onclick = (e) => {
       (<HTMLInputElement>element).value = String(targetTravoMatrix[index].toFixed(3));
     }
   }
+  mainVis.setTime(Number(interpolationSlider.value) / 100);
 };
 
 setTravoButton.onclick = (e) => {
@@ -51,6 +52,7 @@ setTravoButton.onclick = (e) => {
   }
   console.log(tempTargetTravo);
   mainVis.setTargetTravo(tempTargetTravo.copy(), true);
+  mainVis.setTime(Number(interpolationSlider.value) / 100);
 };
 
 addRectButton.onclick = (e) => {
@@ -64,30 +66,3 @@ addCircleButton.onclick = (e) => {
 addTriButton.onclick = (e) => {
   mainVis.addTri();
 };
-// console.log(interpolationSlider);
-
-// applyButton.onclick = (e) => {
-//   let matrixInputs = document.getElementsByClassName("matrixInput");
-//   for (let element of matrixInputs) {
-//     let tempTargetTravo = new Transform();
-//     let tempTargetTravoMatrix = tempTargetTravo.m;
-//     tempTargetTravoMatrix[parseInt((<HTMLInputElement>element).name)] = Number((<HTMLInputElement>element).value);
-//     mainVis.targetTravo = tempTargetTravo.copy();
-//   }
-// };
-
-// toggleArrowsButton.onclick = (e) => {
-//   e.preventDefault();
-//   mainVis.toggleArrows();
-// };
-
-// toggleDeterminantButton.onclick = (e) => {
-//   e.preventDefault();
-//   mainVis.toggleDeterminant();
-// };
-
-// copyTargetTravoButton.onclick = (e) => {
-//   e.preventDefault();
-//   targetTravo = mainVis.getTransformFromTargets();
-//   console.log(targetTravo);
-// };
